@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="StrokeTextView">
+        <attr name="stroke_color" format="color"/>
+    </declare-styleable>
+    <declare-styleable name="SearchWifiView">
+        <!--圆环得颜色-->
+        <attr name="ring_color" format="color"/>
+        <!--圆环得个数-->
+        <attr name="ring_num" format="integer"/>
+        <!--两个圆环得间距-->
+        <attr name="ring_distance" format="dimension"/>
+        <!--圆环得宽度-->
+        <attr name="ring_width" format="dimension"/>
+        <!--圆环得角度-->
+        <attr name="ring_angle" format="integer"/>
+        <!--中间显示的图片-->
+        <attr name="center_drawable" format="reference"/>
+    </declare-styleable>
+
+    <attr name="textFieldStyle" format="reference"/>
+</resources>

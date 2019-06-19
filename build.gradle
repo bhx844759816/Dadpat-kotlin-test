@@ -1,0 +1,35 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    apply from: 'config.gradle'
+    repositories {
+        google()
+//        maven {//本地Maven仓库地址
+//            url uri('C:/Users/DELL/.m2/repository')
+//        }
+        maven {//本地Maven仓库地址
+            url uri('C:/Users/Administrator/.m2/repository')
+        }
+        jcenter()
+        
+    }
+    dependencies {
+        classpath  deps.supports.android_gradle_plugin
+        classpath  deps.supports.kotlin_gradle_plugin
+        classpath  deps.replugins.hostGradle
+        classpath 'com.mob.sdk:MobSDK:+'
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+        
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}

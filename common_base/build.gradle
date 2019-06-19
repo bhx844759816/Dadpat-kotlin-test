@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+
+
+android {
+
+    compileSdkVersion deps.version.compileSdk
+
+
+
+    defaultConfig {
+        minSdkVersion deps.version.minSdk
+        targetSdkVersion deps.version.targetSdk
+        versionCode deps.version.versionCode
+        versionName deps.version.versionName
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api deps.supports.supportAppCompat
+    api deps.supports.supportRecyclerView
+    api deps.supports.constraintLayout
+    //
+    api deps.rxJava.runntime
+    api deps.rxJava.rxAndroid
+    api deps.rxJava.rxlifecycle
+    //
+    api deps.retrofit.runntime
+    api deps.retrofit.convert
+    api deps.retrofit.adapter
+    //
+    api deps.lifecycle.extensions
+    annotationProcessor deps.lifecycle.compiler
+    api deps.logger
+    api deps.glide
+
+//    api supportLibrarys.supportAppCompat
+//    api supportLibrarys.supportAnnotations
+//    api supportLibrarys.supportRecyclerView
+//    api supportLibrarys.supportCardView
+//    api supportLibrarys.constraintLayout
+//    api supportLibrarys.supportDesign
+//
+//    api thirdLibrarys.okHttp
+//    api thirdLibrarys.retrofitRunntime
+//    api thirdLibrarys.retrofitConvert
+//    api thirdLibrarys.retrofitAdapter
+//    api supportLibrarys.supportFragment
+//    api thirdLibrarys.rxJava
+//    api thirdLibrarys.rxAndroid
+//    api thirdLibrarys.logger
+//    api thirdLibrarys.rxlifecycle
+//    api thirdLibrarys.glide
+//    api thirdLibrarys.lifecycle_extensions
+//    annotationProcessor  thirdLibrarys.lifecycle_compiler
+
+}

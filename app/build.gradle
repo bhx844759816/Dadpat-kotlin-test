@@ -1,0 +1,133 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+
+    compileSdkVersion deps.version.compileSdk
+
+
+
+    defaultConfig {
+        applicationId "com.benbaba.dadpat.host"
+        minSdkVersion deps.version.minSdk
+        targetSdkVersion deps.version.targetSdk
+        versionCode deps.version.versionCode
+        versionName deps.version.versionName
+        multiDexEnabled true
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules2.pro'
+        }
+        debug {
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules2.pro'
+        }
+    }
+    signingConfigs {
+        debug {
+            storeFile file('keystore.jks')
+            storePassword "hui5569781"
+            keyAlias "bhx"
+            keyPassword "hui5569781"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+}
+
+//MOB_SDK的配置
+apply plugin: 'com.mob.sdk'
+MobSDK {
+    appKey "2769642d85916"
+    appSecret "48ff31fc24d387ef0ea0d20a446f0d68"
+    SMSSDK {
+        gui false
+    }
+    ShareSDK {
+        gui false
+        //平台配置信息
+        devInfo {
+            SinaWeibo {
+                appKey "2983242978"
+                appSecret "e1d8f32d60d0710c90a531bb68118357"
+                callbackUri "http://www.goofypapa.com"
+                shareByAppClient true
+            }
+            Wechat {
+                appId "wxc6d5d8bca1f1c5a9"
+                appSecret "c5460ffde4c1c93dcc71392108bfa01d"
+                shareByAppClient true
+//                bypassApproval true
+            }
+            QQ {
+                appId "1106691059"
+                appKey "iNQnhVPpj42J8fl5"
+                shareByAppClient true
+            }
+            WechatMoments {
+                appId "wxc6d5d8bca1f1c5a9"
+                appSecret "c5460ffde4c1c93dcc71392108bfa01d"
+                shareByAppClient true
+            }
+            QZone {
+                appId "1106691059"
+                appKey "iNQnhVPpj42J8fl5"
+                shareByAppClient true
+            }
+        }
+    }
+
+}
+//Replugin的配置
+apply plugin: 'replugin-host-gradle'
+repluginHostConfig {
+    useAppCompat = true
+    //取消双进程架构
+    persistentEnable = false
+}
+
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation deps.supports.kotlin_stdlib
+    implementation deps.supports.kotlin_core
+    implementation deps.gif
+    implementation deps.permission
+    implementation deps.circleImg
+    implementation deps.replugins.hostLib
+    implementation deps.multidex
+    implementation deps.rxDownland
+    implementation deps.font
+    implementation deps.screenAdapter
+//    implementation deps.rooms.runtime
+//    implementation deps.rooms.rxJava
+//    annotationProcessor deps.rooms.compiler
+    implementation project(':common_photo')
+    implementation project(':common_base')
+    implementation project(':common_bluetooth')
+    implementation project(':common_wifi')
+    implementation "org.jetbrains.kotlin:kotlin-reflect:1.3.20"
+    //测试库
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0-beta01'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0-beta01'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0-beta01'
+
+}

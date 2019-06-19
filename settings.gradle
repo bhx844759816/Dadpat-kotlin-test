@@ -1,0 +1,1 @@
+include ':app', ':common_bluetooth','common_base','common_photo','common_wifi'

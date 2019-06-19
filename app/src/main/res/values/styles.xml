@@ -1,0 +1,29 @@
+<resources
+        xmlns:tools="http://schemas.android.com/tools"
+        tools:ignore="NewApi">
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowEnableSplitTouch">false</item>
+        <item name="android:splitMotionEvents">false</item>
+        <item name="windowActionBar">false</item>
+        <!-- Custom Style Attribute-->
+        <item name="textFieldStyle">@style/TextField</item>
+    </style>
+
+    <style name="DeviceItemCheck" parent="@android:style/Widget.CompoundButton.CheckBox">
+        <item name="android:button">@drawable/select_device_connect_type</item>
+    </style>
+
+    <!-- Custom Class Styles -->
+    <style name="TextField" parent="android:Widget.Holo.Light.TextView">
+        <item name="fontPath">fonts/fangyuanti.ttf</item>
+        <item name="android:textSize">@dimen/abc_text_size_subhead_material</item>
+    </style>
+</resources>
